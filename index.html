@@ -1303,7 +1303,7 @@
     function btnHTML(d,counted){
       if(counted) return `<div class="btn-wrap reveal">
         <button class="btn done" disabled>✓ Counted Day ${d}</button>
-        <div class="counted-note">You counted for today. Return tomorrow night!</div>
+        <div class="counted-note">Return tomorrow night!</div>
       </div>`;
       if(ST.afterNightfall) return `<div class="btn-wrap reveal">
         <button class="btn" onclick="markCounted(${d})"><span>סָפַרְתִּי — I Counted Today ✦</span></button>
