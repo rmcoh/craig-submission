@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a0c">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>ספירת העומר · Sefirat HaOmer</title>
+    <title>Sefirat HaOmer Counter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100;200;300;400&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+Upright:wght@300;400;500&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
@@ -694,7 +694,7 @@
         .dev-konami-hint{
           position:fixed;bottom:1rem;right:1rem;z-index:1;
           font-family:'Playwrite NZ',cursive;font-size:.55rem;font-weight:200;
-          color:rgba(61,58,46,.0); /* fully invisible — only shown in source */
+          color:rgba(61,58,46,.0); /* fully invisible, shown in source */
           pointer-events:none;user-select:none;
         }
     </style>
@@ -845,11 +845,7 @@
 
     /* ═══════════════════════════════════════════════════
        NUSACH / TRADITION DATA
-       Sources:
-       • Ashkenaz  — Siddur Ashkenaz (Koren/ArtScroll standard)
-       • Sefard    — Siddur Tehillat Hashem / Nusach Ari (Chabad)
-       • Edot Mizrach — Ben Ish Chai / Siddur Yechave Daat
-       • Italki    — Siddur Italki (Italian rite)
+       Sources N/A
     ═══════════════════════════════════════════════════ */
 
     const SEFIRAH_PAIRS=[
@@ -1233,8 +1229,7 @@
           </div>
           <div id="panel-en" class="panel ${ST.tab==='en'?'on':''}">
             <div class="bra-en">${B.en}</div>
-          </div>
-          <div class="bracha-source">Source: ${B.source}</div>
+          
           `; })()}
         </section>
 
