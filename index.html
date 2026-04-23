@@ -69,7 +69,7 @@
               radial-gradient(ellipse 60% 40% at 85% 90%, rgba(138,90,0,.03) 0%, transparent 55%);
           }
           body::after {
-            background: radial-gradient(ellipse at 50% 0%, transparent 20%, rgba(220,210,190,.4) 100%);
+            background: none;
           }
         }
         .theme-toggle {
@@ -82,6 +82,7 @@
         .theme-toggle:hover { border-color: var(--gold2); color: var(--gold2); }
         body.dark-mode { --void:#0a0a0c; --deep:#12130f; --surf:#1a1c18; --card:#222420; --gold:#d4a853; --gold2:#e8c47a; --gold3:#8a6828; --parch:#d6c9a8; --muted:#8a7f6a; --dim:#3d3a2e; --rose:#c4707a; --crimson:#9b2335; --burgundy:#6b1f2a; }
         body.light-mode { --void:#f5f0e8; --deep:#ede6d6; --surf:#e4dbc8; --card:#d9cfb8; --gold:#8a5a00; --gold2:#7a4e00; --gold3:#c49a3c; --parch:#2a1f00; --muted:#5a4a2a; --dim:#c8b88a; --rose:#9b2335; --crimson:#9b2335; }
+        body.light-mode::after { background: none; }
 
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
@@ -153,10 +154,16 @@
 
         /* ─── LOCATION INPUT ──────────────────────────────────── */
         .location-wrapper {
-          display: flex; align-items: center; justify-content: center;
+          display: flex; flex-direction: column; align-items: center;
           max-width: 300px; margin: 1.5rem auto 0;
-          border-bottom: 1px solid rgba(212,168,83,.3);
-          padding-bottom: 0.4rem;
+        }
+        .location-label {
+          font-family: 'Cormorant', serif; font-style: italic; font-size: 0.8rem;
+          color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;
+        }
+        .location-input-row {
+          display: flex; align-items: center; width: 100%;
+          border-bottom: 1px solid rgba(212,168,83,.3); padding-bottom: 0.4rem;
         }
         .location-icon {
           display: none;
@@ -752,9 +759,12 @@
         <div class="hdr-date" id="hdr-date"></div>
         <div class="status-pill" id="status-pill">Locating you…</div>
         <div class="location-wrapper" id="location-wrapper" style="display:none;">
-            <span class="location-icon" aria-hidden="true">📍</span>
-            <input type="text" id="city-input" class="city-input" value="Berkeley" placeholder="Enter your city for accurate times…" aria-label="City location">
-            <button id="update-location-btn" class="update-btn" aria-label="Update Location">Update</button>
+            <span class="location-label">Enter your city for accurate times</span>
+            <div class="location-input-row">
+                <span class="location-icon" aria-hidden="true">📍</span>
+                <input type="text" id="city-input" class="city-input" value="Berkeley" placeholder="City…" aria-label="City location">
+                <button id="update-location-btn" class="update-btn" aria-label="Update Location">Update</button>
+            </div>
         </div>
         <div class="nusach-row" style="margin-top:1rem;">
             <span class="nusach-lbl">Tradition</span>
@@ -1727,8 +1737,7 @@ Baruch shem k'vod malchuto l'olam va'ed.
 
     function openScheduleNotif(){
       const current=ST.customNotifTime||'';
-      const time=prompt('Set daily reminder time (24h format, e.g. 20:00 for 8pm).
-Leave blank to use nightfall time:', current);
+      const time=prompt('Set daily reminder time (24h format, e.g. 20:00 for 8pm).\nLeave blank to use nightfall time:', current);
       if(time===null) return; // cancelled
       if(time===''){
         ST.customNotifTime=null;
@@ -1869,10 +1878,10 @@ Leave blank to use nightfall time:', current);
                 const wrapper = document.getElementById('location-wrapper');
                 if (wrapper) {
                   wrapper.style.display = 'flex';
-                  wrapper.style.borderColor = 'var(--gold3)';
-                  wrapper.style.boxShadow = '0 0 10px rgba(201,168,76,.2)';
+                  const row = wrapper.querySelector('.location-input-row');
+                  if (row) { row.style.borderColor = 'var(--gold3)'; row.style.boxShadow = '0 0 10px rgba(201,168,76,.2)'; }
                 }
-                if (cityInput) { cityInput.value = ''; cityInput.placeholder = 'Enter your location for accurate omer counting times'; }
+                if (cityInput) { cityInput.value = ''; cityInput.placeholder = 'City…'; }
                 init();
               },
               { timeout: 5000 }
@@ -1881,7 +1890,7 @@ Leave blank to use nightfall time:', current);
             ST.lat = 37.8715; ST.lng = -122.2730; ST.locName = 'Berkeley, CA';
             const wrapper = document.getElementById('location-wrapper');
             if (wrapper) wrapper.style.display = 'flex';
-            if (cityInput) { cityInput.value = ''; cityInput.placeholder = 'Enter your location for accurate omer counting times'; }
+            if (cityInput) { cityInput.value = ''; cityInput.placeholder = 'City…'; }
             init();
           }
         }
