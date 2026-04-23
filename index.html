@@ -1057,6 +1057,63 @@ Baruch shem k'vod malchuto l'olam va'ed.
     const now=new Date();
     document.getElementById('hdr-date').textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
+    // Fetch with a timeout — rejects if no response within `ms` milliseconds
+    function fetchWithTimeout(url, ms=8000){
+      const controller=new AbortController();
+      const id=setTimeout(()=>controller.abort(),ms);
+      return fetch(url,{signal:controller.signal}).finally(()=>clearTimeout(id));
+    }
+
+    // Offline fallback: compute omer day and approximate nightfall from local date + coords only
+    function initOffline(){
+      pill('📍 '+ST.locName+' · Offline mode');
+      // Approximate nightfall as civil sunset offset (roughly 8.5 minutes after sunset)
+      // Use a simple fixed-offset estimate based on latitude & day-of-year
+      const d=now;
+      const dayOfYear=Math.floor((d-(new Date(d.getFullYear(),0,0)))/86400000);
+      const latRad=ST.lat*Math.PI/180;
+      // Declination approximation
+      const decl=0.4093*Math.sin(2*Math.PI/365*(dayOfYear-81));
+      // Hour angle for sunset (civil, 0.833° below horizon)
+      const cosH=-(Math.sin(-0.01454)+Math.sin(latRad)*Math.sin(decl))/(Math.cos(latRad)*Math.cos(decl));
+      let sunsetH=12;
+      if(Math.abs(cosH)<=1){
+        const H=Math.acos(cosH)*180/Math.PI;
+        sunsetH=12+(H/15)+(-(ST.lng/15)); // rough local solar time offset
+        // Convert solar time to local clock time — longitude offset from timezone meridian
+        const tzOffset=now.getTimezoneOffset()/-60; // hours
+        sunsetH=12+(H/15)-tzOffset+(ST.lng/15);
+      }
+      // Nightfall ≈ sunset + 18 minutes (tzeit approximation)
+      const nightfallHour=sunsetH+(18/60);
+      const nightfall=new Date(d);
+      nightfall.setHours(Math.floor(nightfallHour), Math.round((nightfallHour%1)*60), 0, 0);
+      ST.nightfallUTC=nightfall;
+      ST.afterNightfall=now>nightfall;
+
+      // Compute omer day from civil date
+      const checkDate=ST.afterNightfall ? new Date(d.getTime()+86400000) : d;
+      const m=checkDate.getMonth()+1, dy=checkDate.getDate(), yr=checkDate.getFullYear();
+      ST.omerDay=calcOmerFromGregorian(yr,m,dy);
+      render();
+    }
+
+    // Map civil (Gregorian) date → omer day using known Passover start dates
+    function calcOmerFromGregorian(yr,m,dy){
+      // Nisan 16 (start of omer) for recent years — extend as needed
+      const omerStart={
+        2024:{m:4,d:23}, 2025:{m:4,d:13}, 2026:{m:4,d:2}, 2027:{m:4,d:22}, 2028:{m:4,d:11}
+      };
+      const start=omerStart[yr];
+      if(!start) return null;
+      const startDate=new Date(yr,start.m-1,start.d);
+      const today=new Date(yr,m-1,dy);
+      const diff=Math.round((today-startDate)/86400000)+1;
+      if(diff>=1&&diff<=49) return diff;
+      if(diff===50) return 50;
+      return null;
+    }
+
     async function init(){
       // Coordinates already set by boot() or fetchZmanimForCity() — just fetch calendar data
       try{
@@ -1068,10 +1125,10 @@ Baruch shem k'vod malchuto l'olam va'ed.
         ].join('-');
         const tz=encodeURIComponent(ST.tz);
 
-        // Parallel fetch: zmanim + today's converter
+        // Parallel fetch: zmanim + today's converter (with 8s timeout each)
         const [zRes,cRes]=await Promise.all([
-          fetch(`https://www.hebcal.com/zmanim?cfg=json&latitude=${ST.lat}&longitude=${ST.lng}&tzid=${tz}&date=${dateStr}`),
-          fetch(`https://www.hebcal.com/converter?cfg=json&date=${dateStr}&g2h=1`),
+          fetchWithTimeout(`https://www.hebcal.com/zmanim?cfg=json&latitude=${ST.lat}&longitude=${ST.lng}&tzid=${tz}&date=${dateStr}`),
+          fetchWithTimeout(`https://www.hebcal.com/converter?cfg=json&date=${dateStr}&g2h=1`),
         ]);
         const [zData,cData]=await Promise.all([zRes.json(),cRes.json()]);
 
@@ -1117,18 +1174,9 @@ Baruch shem k'vod malchuto l'olam va'ed.
         render();
 
       }catch(e){
-        document.getElementById('app-root').innerHTML=`
-          <div class="err-box reveal">
-            <div style="font-size:1.6rem;margin-bottom:.6rem">⚠️</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:.4rem">Calendar API unreachable</div>
-            <p style="color:var(--muted);font-size:.95rem;max-width:420px;margin:0 auto .7rem;line-height:1.6">
-              This app needs internet + HTTPS to fetch live data from HebCal.
-              If you're opening the file directly (file://), serve it with a local server instead.
-            </p>
-            <small style="color:var(--dim)">${e.message}</small><br><br>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-          </div>`;
-        revealAll();
+        // API unreachable (offline, file://, CORS, timeout) — use local calculation fallback
+        console.warn('HebCal API unreachable, using offline fallback:',e.message);
+        initOffline();
       }
     }
 
@@ -1287,6 +1335,7 @@ Baruch shem k'vod malchuto l'olam va'ed.
           </div>
           <div id="panel-en" class="panel ${ST.tab==='en'?'on':''}">
             <div class="bra-en">${B.en}</div>
+          </div>
 
           `; })()}
         </section>
@@ -1774,7 +1823,7 @@ Leave blank to use nightfall time:', current);
           updateBtn.disabled = true;
           try {
             const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&addressdetails=1&limit=1`;
-            const geoResponse = await fetch(url);
+            const geoResponse = await fetchWithTimeout(url);
             if (!geoResponse.ok) throw new Error("Network response was not ok");
             const geoData = await geoResponse.json();
             if (!geoData || geoData.length === 0) throw new Error("City not found");
