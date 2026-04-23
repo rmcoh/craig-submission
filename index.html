@@ -861,7 +861,7 @@
             <button class="dev-btn dev-btn-apply" id="dev-apply">Apply</button>
             <button class="dev-btn dev-btn-reset" id="dev-live">Restore Live</button>
         </div>
-        <div class="dev-note">Changes are temporary — real saved progress is untouched.<br>Konami code again to toggle this panel.</div>
+        <div class="dev-note">Changes are temporary. Real saved progress will be untouched.<br>Konami code again to toggle this panel.</div>
     </div>
 </div>
 
@@ -1086,7 +1086,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
     let ST={
       counted:[],      // array of omer day numbers counted
       revealed:[],     // day numbers whose tile shows the image (in-order)
-      skipped:[],      // day numbers that were missed — tile shows ✕
+      skipped:[],      // day numbers that were missed: tile shows ✕
       tab:'he',
       notifGranted:false,
       nightfallUTC:null,
@@ -1116,7 +1116,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
     const now=new Date();
     document.getElementById('hdr-date').textContent=now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-    // Fetch with a timeout — rejects if no response within `ms` milliseconds
+    // Fetch with a timeout —> rejects if no response within `ms` milliseconds
     function fetchWithTimeout(url, ms=8000){
       const controller=new AbortController();
       const id=setTimeout(()=>controller.abort(),ms);
@@ -1139,7 +1139,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
       if(Math.abs(cosH)<=1){
         const H=Math.acos(cosH)*180/Math.PI;
         sunsetH=12+(H/15)+(-(ST.lng/15)); // rough local solar time offset
-        // Convert solar time to local clock time — longitude offset from timezone meridian
+        // Convert solar time to local clock time —> longitude offset from timezone meridian
         const tzOffset=now.getTimezoneOffset()/-60; // hours
         sunsetH=12+(H/15)-tzOffset+(ST.lng/15);
       }
@@ -1159,7 +1159,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
 
     // Map civil (Gregorian) date → omer day using known Passover start dates
     function calcOmerFromGregorian(yr,m,dy){
-      // Nisan 16 (start of omer) for recent years — extend as needed
+      // Nisan 16 (start of omer) for recent years —> extend as needed
       const omerStart={
         2024:{m:4,d:23}, 2025:{m:4,d:13}, 2026:{m:4,d:2}, 2027:{m:4,d:22}, 2028:{m:4,d:11}
       };
@@ -1174,9 +1174,9 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
     }
 
     async function init(){
-      // Coordinates already set by boot() or fetchZmanimForCity() — just fetch calendar data
+      // Coordinates already set by boot() or fetchZmanimForCity(), just fetch calendar data
       try{
-        // Build date string in LOCAL time (not UTC) — critical for correct zmanim
+        // Build date string in LOCAL time (not UTC) , critical for correct zmanim
         const dateStr=[
           now.getFullYear(),
           String(now.getMonth()+1).padStart(2,'0'),
@@ -1209,7 +1209,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
         //
         // Jewish day starts at nightfall.
         // Hebrew date from converter = the Hebrew date of the CIVIL day (midnight→midnight).
-        // If AFTER nightfall, the Hebrew date has already advanced — so we fetch tomorrow's civil date.
+        // If AFTER nightfall, the Hebrew date has already advanced. so we fetch tomorrow's civil date.
         //
         // Simplest correct approach: if after nightfall, re-query converter for tomorrow civil date.
         let omerDay=null;
@@ -1233,7 +1233,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
         render();
 
       }catch(e){
-        // API unreachable (offline, file://, CORS, timeout) — use local calculation fallback
+        // API unreachable (offline, file://, CORS, timeout), use local calculation fallback
         console.warn('HebCal API unreachable, using offline fallback:',e.message);
         initOffline();
       }
@@ -1243,7 +1243,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
     function extractOmer(data){
       // Method 1: direct .omer field
       if(typeof data.omer==='number'&&data.omer>0) return data.omer;
-      // Method 2: events array — omer count or Shavuot
+      // Method 2: events array, omer count or Shavuot
       if(Array.isArray(data.events)){
         for(const ev of data.events){
           const m=ev.match(/^(\d+) days? of the Omer/i)||ev.match(/^(\d+)(?:st|nd|rd|th) day of the Omer/i);
@@ -1316,7 +1316,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
             </div>
             <div class="time-box" style="border-color:rgba(212,168,83,.3)">
               <div class="glow-txt">✦ חַג שָׁמֵחַ ✦</div>
-              <div class="time-sub" style="margin-top:.8rem;font-style:italic">The counting is complete — rejoice!</div>
+              <div class="time-sub" style="margin-top:.8rem;font-style:italic">The counting is complete. Let's celebrate Shavuot!</div>
             </div>
           </section>
 
@@ -1438,7 +1438,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
               ${ST.nightfallUTC&&!ST.afterNightfall&&ST.notifGranted?`<button class="nbtn" onclick="openScheduleNotif()">Schedule Tonight's Reminder</button>`:''}
             </div>
             <div class="notif-status" id="notif-status">
-              ${(typeof Notification !== 'undefined' && Notification.permission === 'granted' && ST.notifGranted) ? '✓ Notifications are enabled — you will be reminded each night at nightfall.' : 'Tap above to allow notifications'}
+              ${(typeof Notification !== 'undefined' && Notification.permission === 'granted' && ST.notifGranted) ? '✓ Notifications are enabled. You will be reminded each night to count.' : 'Tap above to allow notifications'}
             </div>
           </div>
         </section>
@@ -1553,7 +1553,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
         const banner=document.createElement('div');
         banner.id='shavuot-banner';banner.className='shavuot-banner';
         banner.innerHTML='<div class="shavuot-banner-title">חַג שָבוּעות שָשֵׁמַח</div>'
-          +'<div class="shavuot-banner-sub">Chag Shavuot Sameach — You completed all 49 days ✶</div>';
+          +'<div class="shavuot-banner-sub">Chag Shavuot Sameach! You completed all 49 days ✶</div>';
         grid.parentElement.insertBefore(banner,grid);
       }
 
@@ -1590,7 +1590,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
         leg.innerHTML=`
           <div style="width:100%;text-align:center;margin-top:.5rem">
             <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:var(--muted);margin-bottom:.5rem">
-              ${ST.revealed.length} of 49 tiles revealed — ${pct}% of your mosaic uncovered
+              ${ST.revealed.length} of 49 tiles revealed, ${pct}% of your mosaic uncovered
               ${missedCount>0?`<span style="color:var(--crimson);margin-left:.5rem">· ${missedCount} day${missedCount>1?'s':''} missed</span>`:''}
             </div>
             <div style="height:2px;background:var(--card);border-radius:2px;overflow:hidden;max-width:240px;margin:0 auto">
@@ -1743,11 +1743,11 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
       if(p==='granted'){
         ST.notifGranted=true;
         localStorage.setItem('omer-notif-enabled','1');
-        if(el) el.textContent='✓ Notifications enabled — you will be reminded each night at nightfall.';
+        if(el) el.textContent='✓ Notifications enabled. You will be reminded each night to count.';
         scheduleNotif();
         render(); // update button
       }else{
-        if(el) el.textContent='Notifications are blocked — enable them in your browser settings.';
+        if(el) el.textContent='Notifications are blocked. You won't be reminded to count. For reminders: enable notifications in your browser settings. ';
       }
     }
 
@@ -1933,7 +1933,7 @@ Baruch shem k'vod malchuto l'olam va'ed.`,
                 init();
               },
               (err) => {
-                // Blocked or denied — show the manual input with helpful message
+                // Blocked or denied: show the manual input with helpful message
                 console.warn("Geolocation denied, showing manual location input.");
                 ST.lat = 37.8715; ST.lng = -122.2730; ST.locName = 'Berkeley, CA';
                 const wrapper = document.getElementById('location-wrapper');
