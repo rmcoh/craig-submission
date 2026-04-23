@@ -43,46 +43,84 @@
 
 
         /* ─── LIGHT / DARK MODE ──────────────────────────────── */
+        /* Light mode: warm parchment with strong contrast */
         @media (prefers-color-scheme: light) {
           :root {
-            --void:#f5f0e8;
-            --deep:#ede6d6;
-            --surf:#e4dbc8;
-            --card:#d9cfb8;
-            --gold:#8a5a00;
-            --gold2:#7a4e00;
-            --gold3:#c49a3c;
-            --parch:#2a1f00;
-            --muted:#5a4a2a;
-            --dim:#c8b88a;
-            --burgundy:#6b1f2a;
-            --crimson:#9b2335;
-            --plum:#8a4a55;
-            --rose:#9b2335;
-            --amber:#8a5a00;
-            --c1:#8a5a00;
+            --void:#faf6ee;
+            --deep:#f0e8d5;
+            --surf:#e8ddc8;
+            --card:#ddd0b5;
+            --gold:#7a4800;
+            --gold2:#6b3d00;
+            --gold3:#b8862a;
+            --parch:#1a1200;
+            --muted:#4a3a18;
+            --dim:#9a8860;
+            --burgundy:#7a1f2a;
+            --crimson:#8b1a2a;
+            --plum:#6a3a45;
+            --rose:#8b1a2a;
+            --amber:#7a4800;
+            --c1:#7a4800;
           }
-          body::before {
-            background:
-              radial-gradient(ellipse 90% 50% at 50% 110%, rgba(155,35,53,.05) 0%, transparent 65%),
-              radial-gradient(ellipse 60% 40% at 15% 90%, rgba(138,90,0,.04) 0%, transparent 55%),
-              radial-gradient(ellipse 60% 40% at 85% 90%, rgba(138,90,0,.03) 0%, transparent 55%);
-          }
-          body::after {
-            background: none;
-          }
+          body::before { background: none; }
+          body::after  { background: none; }
+          .title-he { color:#6b3d00; text-shadow:0 1px 0 rgba(255,255,255,.6),0 2px 8px rgba(107,61,0,.15); }
+          .big-num  { color:#6b3d00; text-shadow:0 2px 0 rgba(255,255,255,.5),0 4px 20px rgba(107,61,0,.12); }
+          .countdown{ color:#6b3d00; }
+          .glow-txt { color:#6b3d00; }
+          .hl { color:#6b3d00; }
+          .sef-badge-main { color:#6b3d00; }
+          .mosaic-peek-btn{ color:#6b3d00; border-color:rgba(107,61,0,.35); }
+          .mosaic-peek-btn:hover{ border-color:#6b3d00; background:rgba(107,61,0,.07); }
+          .tile-locked { background:rgba(0,0,0,.04); border-color:rgba(0,0,0,.12) !important; color:var(--muted); }
+          .tile-locked .tile-num { color:var(--muted); }
+          .progress-fill { background:linear-gradient(90deg,var(--crimson),var(--gold2)); }
+          .progress-track { background:#ccc0a0; }
+          .orn::before { background:linear-gradient(to right,transparent,rgba(139,26,42,.4)); }
+          .orn::after  { background:linear-gradient(to left, transparent,rgba(139,26,42,.4)); }
+          .stat { background:rgba(0,0,0,.03); border-color:rgba(107,61,0,.18) !important; }
+          .stat-n { color:#6b3d00; }
+          #sec-bracha { border-color:rgba(139,26,42,.25); }
+          .notif-card { border-color:rgba(139,26,42,.3); }
+          .nbtn { color:var(--parch); border-color:rgba(107,61,0,.3); background:rgba(107,61,0,.05); }
+          .nbtn:hover { color:#6b3d00; border-color:#6b3d00; background:rgba(107,61,0,.1); }
+          .warn-banner { border-color:var(--crimson); }
+          .popup-title { color:#6b3d00; }
+          header::after { background:linear-gradient(90deg,transparent,rgba(107,61,0,.35) 50%,transparent); }
+          .nusach-select { color:#6b3d00; }
+          .time-box { border-color:rgba(107,61,0,.2); }
         }
         .theme-toggle {
-          position: fixed; top: 1rem; right: 1rem; z-index: 50;
-          background: transparent; border: 1px solid var(--dim);
+          position: fixed; top: .75rem; right: .75rem; z-index: 50;
+          background: var(--deep); border: 1px solid var(--dim);
           color: var(--muted); font-family: 'Playwrite NZ', cursive; font-weight: 200;
-          font-size: 0.6rem; padding: 0.3rem 0.7rem; border-radius: 4px; cursor: pointer;
+          font-size: 0.6rem; padding: 0.25rem 0.6rem; border-radius: 4px; cursor: pointer;
           transition: border-color 0.3s, color 0.3s; letter-spacing: 0.1em;
         }
         .theme-toggle:hover { border-color: var(--gold2); color: var(--gold2); }
         body.dark-mode { --void:#0a0a0c; --deep:#12130f; --surf:#1a1c18; --card:#222420; --gold:#d4a853; --gold2:#e8c47a; --gold3:#8a6828; --parch:#d6c9a8; --muted:#8a7f6a; --dim:#3d3a2e; --rose:#c4707a; --crimson:#9b2335; --burgundy:#6b1f2a; }
-        body.light-mode { --void:#f5f0e8; --deep:#ede6d6; --surf:#e4dbc8; --card:#d9cfb8; --gold:#8a5a00; --gold2:#7a4e00; --gold3:#c49a3c; --parch:#2a1f00; --muted:#5a4a2a; --dim:#c8b88a; --rose:#9b2335; --crimson:#9b2335; }
-        body.light-mode::after { background: none; }
+        body.light-mode { --void:#faf6ee; --deep:#f0e8d5; --surf:#e8ddc8; --card:#ddd0b5; --gold:#7a4800; --gold2:#6b3d00; --gold3:#b8862a; --parch:#1a1200; --muted:#4a3a18; --dim:#9a8860; --rose:#8b1a2a; --crimson:#8b1a2a; --burgundy:#7a1f2a; }
+        body.light-mode::before { background: none !important; }
+        body.light-mode::after  { background: none !important; }
+        body.light-mode .title-he { color:#6b3d00; text-shadow:0 1px 0 rgba(255,255,255,.6),0 2px 8px rgba(107,61,0,.15); }
+        body.light-mode .big-num  { color:#6b3d00; text-shadow:0 2px 0 rgba(255,255,255,.5),0 4px 20px rgba(107,61,0,.12); }
+        body.light-mode .countdown { color:#6b3d00; }
+        body.light-mode .glow-txt  { color:#6b3d00; }
+        body.light-mode .hl        { color:#6b3d00; }
+        body.light-mode .stat-n    { color:#6b3d00; }
+        body.light-mode .sef-badge-main { color:#6b3d00; }
+        body.light-mode .nusach-select  { color:#6b3d00; }
+        body.light-mode .mosaic-peek-btn{ color:#6b3d00; border-color:rgba(107,61,0,.3); }
+        body.light-mode .tile-locked    { background:rgba(0,0,0,.04); border-color:rgba(0,0,0,.12) !important; color:var(--muted); }
+        body.light-mode .progress-track { background:#ccc0a0; }
+        body.light-mode .progress-fill  { background:linear-gradient(90deg,var(--crimson),var(--gold2)); }
+        body.light-mode .stat           { border-color:rgba(107,61,0,.18) !important; }
+        body.light-mode .nbtn           { color:var(--parch); border-color:rgba(107,61,0,.3); background:rgba(107,61,0,.05); }
+        body.light-mode .nbtn:hover     { color:#6b3d00; border-color:#6b3d00; }
+        body.light-mode #sec-bracha     { border-color:rgba(139,26,42,.25); }
+        body.light-mode .popup-title    { color:#6b3d00; }
+        body.light-mode .time-box       { border-color:rgba(107,61,0,.2); }
 
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
@@ -93,7 +131,7 @@
           color:var(--parch);
           font-family:'Cormorant',Georgia,serif;
           overflow-x:hidden;
-          line-height: 1.6;
+          line-height:1.5;
         }
 
         body::before{
@@ -105,19 +143,19 @@
         }
         body::after{
           content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-          background:radial-gradient(ellipse at 50% 0%, transparent 20%, rgba(5,4,4,.75) 100%);
+          background:radial-gradient(ellipse at 50% 0%, transparent 20%, rgba(5,4,4,.6) 100%);
         }
 
         /* ─── LAYOUT ─────────────────────────────────────────── */
         .app{
           position:relative;z-index:1;
-          max-width:800px;margin:0 auto;
-          padding:0 1.5rem 6rem;
+          max-width:680px;margin:0 auto;
+          padding:0 1.25rem 3rem;
         }
 
         /* ─── HEADER ─────────────────────────────────────────── */
         header{
-          text-align:center;padding:3rem 0 1.5rem;
+          text-align:center;padding:1rem 0 .75rem;
           position:relative;
         }
         header::after{
@@ -125,365 +163,353 @@
           background:linear-gradient(90deg,transparent,rgba(212,168,83,.4) 50%,transparent);
         }
         .star-icon{
-          font-size:1.4rem;color:var(--rose);
-          display:block;margin-bottom:.8rem;
+          font-size:1.1rem;color:var(--rose);
+          display:block;margin-bottom:.4rem;
           animation:twinkle 4s ease-in-out infinite;
         }
         @keyframes twinkle{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.1)}}
 
         .title-he{
           font-family:'UnifrakturMaguntia',cursive;
-          font-size:clamp(2.8rem,8vw,4.8rem);font-weight:400;
+          font-size:clamp(1.7rem,5vw,2.8rem);font-weight:400;
           color:var(--gold2);direction:rtl;line-height:1.1;
-          text-shadow:0 0 40px rgba(212,168,83,.4),0 0 80px rgba(155,35,53,.2);
-          letter-spacing:.02em;margin-bottom:0.5rem;
+          text-shadow:0 0 30px rgba(212,168,83,.35),0 0 60px rgba(155,35,53,.15);
+          letter-spacing:.02em;margin-bottom:.3rem;
         }
         .title-en{
           font-family:'Playwrite NZ',cursive;
-          font-size:clamp(.7rem,2vw,.9rem);font-weight:200;
-          color:var(--muted);letter-spacing:.2em;
-          margin-top:.8rem;
+          font-size:clamp(.6rem,1.5vw,.75rem);font-weight:200;
+          color:var(--muted);letter-spacing:.18em;
+          margin-top:.4rem;
         }
-        .hdr-date{font-size:.9rem;color:var(--muted);margin-top:1rem;letter-spacing:.08em;font-family:'Cormorant',serif;font-style:italic}
+        .hdr-date{font-size:.82rem;color:var(--muted);margin-top:.5rem;letter-spacing:.06em;font-family:'Cormorant',serif;font-style:italic}
 
         .status-pill{
-          display:inline-block;font-size:.75rem;color:var(--muted);font-family:'Playwrite NZ',cursive;font-weight:200;
+          display:inline-block;font-size:.7rem;color:var(--muted);font-family:'Playwrite NZ',cursive;font-weight:200;
           background:transparent; border-bottom:1px solid var(--dim);
-          padding:.4rem 1.2rem;margin-top:1.5rem;
+          padding:.25rem .9rem;margin-top:.75rem;
         }
 
         /* ─── LOCATION INPUT ──────────────────────────────────── */
         .location-wrapper {
           display: flex; flex-direction: column; align-items: center;
-          max-width: 300px; margin: 1.5rem auto 0;
+          max-width: 280px; margin: .9rem auto 0;
         }
         .location-label {
-          font-family: 'Cormorant', serif; font-style: italic; font-size: 0.8rem;
-          color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;
+          font-family: 'Cormorant', serif; font-style: italic; font-size: 0.78rem;
+          color: var(--muted); margin-bottom: 0.3rem; letter-spacing: 0.05em;
         }
         .location-input-row {
           display: flex; align-items: center; width: 100%;
-          border-bottom: 1px solid rgba(212,168,83,.3); padding-bottom: 0.4rem;
+          border-bottom: 1px solid rgba(212,168,83,.3); padding-bottom: 0.3rem;
         }
-        .location-icon {
-          display: none;
-        }
+        .location-icon { display: none; }
         .city-input {
           background: transparent; border: none; outline: none;
-          color: var(--gold2); font-family: 'Cormorant', serif; font-size: 1.05rem; font-style: italic;
+          color: var(--gold2); font-family: 'Cormorant', serif; font-size: 1rem; font-style: italic;
           flex: 1; text-align: center;
         }
         .city-input::placeholder { color: var(--muted); font-style: normal; }
         .update-btn {
           background: transparent; border: 1px solid var(--dim);
           color: var(--muted); font-family: 'Playwrite NZ', cursive; font-weight: 200;
-          font-size: 0.65rem; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;
+          font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 3px; cursor: pointer;
           transition: border-color 0.3s, color 0.3s; text-transform: uppercase; letter-spacing: 0.1em;
         }
         .update-btn:hover { border-color: var(--gold2); color: var(--gold2); }
 
         /* ─── SECTION DIVIDERS ────────────────────────────────── */
         .orn{
-          display:flex;align-items:center;gap:1.5rem;
-          margin:3.5rem 0 2rem;
+          display:flex;align-items:center;gap:1rem;
+          margin:1.25rem 0 .8rem;
         }
         .orn::before,.orn::after{ content:'';flex:1;height:1px; }
         .orn::before{background:linear-gradient(to right,transparent,rgba(155,35,53,.5))}
         .orn::after {background:linear-gradient(to left, transparent,rgba(155,35,53,.5))}
         .orn span{
           font-family:'Playwrite NZ',cursive;
-          font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+          font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
           color:var(--rose);white-space:nowrap;font-weight:200;
         }
 
         /* ─── LOADING ─────────────────────────────────────────── */
-        #loading{text-align:center;padding:8rem 0}
+        #loading{text-align:center;padding:4rem 0}
         .spinner{
-          width:48px;height:48px;border:1px solid var(--dim);
+          width:36px;height:36px;border:1px solid var(--dim);
           border-top-color:var(--crimson);border-radius:50%;
-          animation:spin 1s linear infinite;margin:0 auto 1.5rem;
+          animation:spin 1s linear infinite;margin:0 auto 1rem;
         }
         @keyframes spin{to{transform:rotate(360deg)}}
         .loading-text{
           font-family:'Playwrite NZ',cursive;
-          font-size:.95rem;color:var(--muted);font-weight:200;
+          font-size:.85rem;color:var(--muted);font-weight:200;
         }
 
-        .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+        .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
         .reveal.in{opacity:1;transform:none}
 
         /* ─── DAY HERO ────────────────────────────────────────── */
-        #sec-day{text-align:center;margin-bottom:2rem; padding-top:1rem;}
+        #sec-day{text-align:center;margin-bottom:1rem;padding-top:.5rem;}
         .big-num{
           font-family:'Cormorant Upright',serif;
-          font-size:clamp(6rem,20vw,11rem);font-weight:300;line-height:0.9;
+          font-size:clamp(3rem,11vw,6rem);font-weight:300;line-height:1;
           color:var(--gold2);
-          text-shadow:0 0 60px rgba(212,168,83,.4),0 0 120px rgba(155,35,53,.15);
-          margin-bottom:0.5rem;
+          text-shadow:0 0 40px rgba(212,168,83,.35),0 0 80px rgba(155,35,53,.1);
+          margin-bottom:.25rem;
         }
         .of-49{
-          font-family:'Playwrite NZ',cursive;font-size:.8rem;font-weight:200;
-          color:var(--muted);letter-spacing:.15em;margin-top:0.5rem;
+          font-family:'Playwrite NZ',cursive;font-size:.72rem;font-weight:200;
+          color:var(--muted);letter-spacing:.14em;margin-top:.25rem;
         }
-        .progress-wrap{max-width:320px;margin:2rem auto 1rem}
+        .progress-wrap{max-width:280px;margin:1rem auto .5rem}
         .progress-track{height:1px;background:var(--dim);overflow:visible;position:relative;}
         .progress-fill{
-          height:3px; position:absolute; top:-1px; left:0;
+          height:2px; position:absolute; top:-0.5px; left:0;
           background:linear-gradient(90deg,var(--burgundy),var(--gold2));
           transition:width 1.8s cubic-bezier(.4,0,.2,1);
         }
-        .progress-label{font-size:.75rem;color:var(--muted);text-align:right;margin-top:.8rem;letter-spacing:0.05em;}
+        .progress-label{font-size:.7rem;color:var(--muted);text-align:right;margin-top:.5rem;letter-spacing:0.04em;}
 
         .sef-badge{
           display:block;
-          max-width:400px;
-          background: linear-gradient(180deg, rgba(212,168,83,.04), transparent);
-          border-top: 1px solid;
-          padding: 2rem 1.5rem;
-          margin: 3rem auto 0;
+          max-width:380px;
+          background:linear-gradient(180deg,rgba(212,168,83,.05),transparent);
+          border-top:1px solid;
+          padding:1rem 1.2rem .8rem;
+          margin:1rem auto 0;
           text-align:center;
         }
         .sef-badge-lbl{
           font-family:'Cormorant',serif;
           font-style:italic;
-          font-size:1.1rem;
-          letter-spacing:.05em;
+          font-size:.95rem;
+          letter-spacing:.04em;
           color:var(--muted);
-          margin-bottom:.8rem;
+          margin-bottom:.3rem;
         }
-        .sef-badge-main{font-family:'Cormorant Upright',serif;font-size:1.8rem;font-weight:300; letter-spacing:0.02em;}
-        .sef-badge-sub{font-family:'Cormorant',serif;font-style:italic;font-size:1.05rem;color:var(--muted);margin-top:.4rem;}
+        .sef-badge-main{font-family:'Cormorant Upright',serif;font-size:1.5rem;font-weight:300;letter-spacing:0.02em;}
+        .sef-badge-sub{font-family:'Cormorant',serif;font-style:italic;font-size:.92rem;color:var(--muted);margin-top:.2rem;}
 
         /* ─── COUNTDOWN BOX ───────────────────────────────────── */
         .time-box{
-          max-width:420px;margin:1.5rem auto 0;
+          max-width:380px;margin:.8rem auto 0;
           background:transparent;
-          border-top:1px solid rgba(212,168,83,.15);
-          border-bottom:1px solid rgba(212,168,83,.15);
-          padding:1.5rem 1rem;text-align:center;
+          border-top:1px solid rgba(212,168,83,.18);
+          border-bottom:1px solid rgba(212,168,83,.18);
+          padding:.9rem 1rem;text-align:center;
         }
-        .time-box-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.25em;color:var(--muted);margin-bottom:.8rem;font-family:'Playwrite NZ',cursive;font-weight:200}
+        .time-box-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:.4rem;font-family:'Playwrite NZ',cursive;font-weight:200}
         .countdown{
-          font-family:'Cormorant Upright',serif;font-size:2.8rem;font-weight:300;
+          font-family:'Cormorant Upright',serif;font-size:2.2rem;font-weight:300;
           color:var(--gold2);
         }
-        .time-sub{font-size:.85rem;color:var(--muted);margin-top:.6rem; letter-spacing:.05em;}
+        .time-sub{font-size:.8rem;color:var(--muted);margin-top:.3rem;letter-spacing:.04em;}
         .glow-txt{
-          font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;
+          font-family:'Cormorant',serif;font-style:italic;font-size:1.35rem;
           color:var(--gold2);animation:gp 3s ease-in-out infinite;
         }
-        @keyframes gp{0%,100%{text-shadow:0 0 10px rgba(212,168,83,.2)}50%{text-shadow:0 0 40px rgba(212,168,83,.6),0 0 80px rgba(155,35,53,.2)}}
+        @keyframes gp{0%,100%{text-shadow:0 0 8px rgba(212,168,83,.2)}50%{text-shadow:0 0 30px rgba(212,168,83,.55),0 0 60px rgba(155,35,53,.15)}}
 
         /* ─── BRACHA CARD ──────────────────────────────────────── */
         #sec-bracha{
           background:transparent;
           border-top:1px solid rgba(155,35,53,.3);
           border-bottom:1px solid rgba(155,35,53,.3);
-          padding:3rem 1rem;margin-bottom:4rem;
+          padding:1.2rem .75rem 1.5rem;margin-bottom:1.5rem;
           position:relative;
         }
         .tabs{
-          display:flex;gap:1.5rem; justify-content:center;
-          margin-bottom:2.5rem;padding-bottom:.8rem;
+          display:flex;gap:1.25rem;justify-content:center;
+          margin-bottom:1.2rem;padding-bottom:.5rem;
         }
         .tab{
-          font-family:'Playwrite NZ',cursive;font-size:.75rem;font-weight:200;
+          font-family:'Playwrite NZ',cursive;font-size:.72rem;font-weight:200;
           color:var(--muted);background:none;border:none;
-          cursor:pointer; padding-bottom:.2rem;
-          transition:color .3s; position:relative;
+          cursor:pointer;padding-bottom:.2rem;
+          transition:color .3s;position:relative;
         }
-        .tab::after {
-          content: ''; position: absolute; bottom: -5px; left: 50%; right: 50%;
-          height: 1px; background: var(--rose); transition: all .3s ease; opacity: 0;
+        .tab::after{
+          content:'';position:absolute;bottom:-4px;left:50%;right:50%;
+          height:1px;background:var(--rose);transition:all .3s ease;opacity:0;
         }
         .tab:hover{color:var(--gold2)}
         .tab.on{color:var(--gold2);}
-        .tab.on::after { left: 0; right: 0; opacity: 1; }
+        .tab.on::after{left:0;right:0;opacity:1;}
 
         .panel{display:none;}
-        .panel.on{display:block; animation: fadeIn .5s ease;}
-        @keyframes fadeIn { from{opacity:0; transform:translateY(5px)} to{opacity:1; transform:none} }
+        .panel.on{display:block;animation:fadeIn .4s ease;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
         .bra-he{
           font-family:'Cormorant',serif;
-          font-size:clamp(1.4rem,4vw,1.8rem);line-height:2.2;
+          font-size:clamp(1.15rem,3.5vw,1.5rem);line-height:1.9;
           direction:rtl;text-align:center;
-          color:var(--parch);font-weight:300;
+          color:var(--parch);font-weight:400;
         }
         .bra-tr{
           font-family:'Cormorant',serif;font-style:italic;
-          font-size:1.15rem;line-height:2.1;color:var(--parch);font-weight:300;text-align:center;
+          font-size:1.05rem;line-height:1.85;color:var(--parch);font-weight:400;text-align:center;
         }
         .bra-en{
           font-family:'Cormorant',serif;
-          font-size:1.15rem;line-height:2.1;color:var(--parch);font-weight:300;text-align:center;
+          font-size:1.05rem;line-height:1.85;color:var(--parch);font-weight:400;text-align:center;
         }
-        .hl{color:var(--gold2);font-weight:400;font-style:normal;font-family:'Cormorant Upright',serif}
-        .bra-he .hl{font-weight:500}
+        .hl{color:var(--gold2);font-weight:600;font-style:normal;font-family:'Cormorant Upright',serif}
+        .bra-he .hl{font-weight:600}
 
         /* ─── BUTTON ───────────────────────────────────────────── */
-        .btn-wrap{text-align:center;margin:3rem 0;}
+        .btn-wrap{text-align:center;margin:1.25rem 0;}
         .btn{
-          font-family:'Playwrite NZ',cursive;font-size:.9rem;font-weight:300;
-          letter-spacing:.15em;color:var(--void);
+          font-family:'Playwrite NZ',cursive;font-size:.78rem;font-weight:300;
+          letter-spacing:.12em;color:#1a1400;
           background:var(--gold2);
-          border:none;border-radius:0px;padding:1.2rem 3.5rem;cursor:pointer;
-          box-shadow:0 4px 30px rgba(212,168,83,.2);
-          transition:transform .3s,box-shadow .3s, background .3s;
+          border:none;border-radius:0;padding:.9rem 2.5rem;cursor:pointer;
+          box-shadow:0 3px 20px rgba(212,168,83,.25);
+          transition:transform .25s,box-shadow .25s,background .25s;
         }
-        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(212,168,83,.35); background:var(--gold);}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(212,168,83,.4);background:var(--gold);}
         .btn:active{transform:translateY(0)}
         .btn:disabled,.btn.done{
           background:transparent;color:var(--muted);
-          border:1px solid var(--dim);box-shadow:none;cursor:default;
-          transform:none;
+          border:1px solid var(--dim);box-shadow:none;cursor:default;transform:none;
         }
         .counted-note{
-          font-family:'Cormorant Garamond',serif;font-style:italic;
-          font-size:1.05rem;color:var(--muted);margin-top:1rem;
+          font-family:'Cormorant',serif;font-style:italic;
+          font-size:.95rem;color:var(--muted);margin-top:.6rem;
         }
-        .early-note{font-size:.85rem;color:var(--muted);font-style:italic;margin-top:.8rem;display:block}
+        .early-note{font-size:.8rem;color:var(--muted);font-style:italic;margin-top:.5rem;display:block}
 
         /* ─── WARNING BANNER ────────────────────────────────── */
         .warn-banner{
           background:transparent;
-          border-left:1px solid var(--crimson);
-          padding:.5rem 0 .5rem 1.5rem;
-          margin-bottom:3rem;
+          border-left:2px solid var(--crimson);
+          padding:.4rem 0 .4rem 1rem;
+          margin-bottom:1.2rem;
           font-style:italic;
-          font-size:1rem;
+          font-size:.92rem;
           color:var(--muted);
-          line-height:1.8;font-weight:300;
-          max-width: 600px; margin-left: auto; margin-right: auto; text-align:left;
+          line-height:1.6;font-weight:400;
+          max-width:580px;margin-left:auto;margin-right:auto;text-align:left;
         }
         .warn-banner strong{
-          display:block; font-style:normal; font-size:.7rem;
-          letter-spacing:.25em; text-transform:uppercase;
-          color:var(--rose); margin-bottom:.6rem;
+          display:block;font-style:normal;font-size:.65rem;
+          letter-spacing:.2em;text-transform:uppercase;
+          color:var(--rose);margin-bottom:.3rem;
           font-family:'Playwrite NZ',cursive;font-weight:200;
         }
 
         /* ─── MOSAIC OVERLAY ──────────────────────────────────── */
         #mosaic-overlay{
-          position:fixed;inset:0;z-index:100; display:flex;align-items:center;justify-content:center;
-          background:rgba(7,9,15,.9); backdrop-filter:blur(10px);
-          opacity:0;pointer-events:none; transition:opacity .6s ease;
+          position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+          background:rgba(7,9,15,.88);backdrop-filter:blur(10px);
+          opacity:0;pointer-events:none;transition:opacity .5s ease;
         }
         #mosaic-overlay.open{opacity:1;pointer-events:all}
         .mosaic-popup{
-          position:relative; width:min(90vw,600px); background:var(--void);
-          border:1px solid var(--dim); padding:3rem 2rem;
-          transform:translateY(20px);transition:transform .6s cubic-bezier(.2,1,.3,1);
+          position:relative;width:min(90vw,560px);background:var(--void);
+          border:1px solid var(--dim);padding:1.75rem 1.5rem;
+          transform:translateY(16px);transition:transform .5s cubic-bezier(.2,1,.3,1);
         }
         #mosaic-overlay.open .mosaic-popup{transform:translateY(0)}
         .popup-close{
-          position:absolute;top:1rem;right:1.2rem; background:none;border:none;
-          color:var(--muted);font-size:1.5rem;cursor:pointer;transition:color .3s;
+          position:absolute;top:.75rem;right:1rem;background:none;border:none;
+          color:var(--muted);font-size:1.3rem;cursor:pointer;transition:color .3s;
         }
         .popup-close:hover{color:var(--gold2)}
         .popup-title{
-          font-family:'Playwrite NZ',cursive; font-size:.9rem;color:var(--gold2);
-          text-align:center; margin-bottom:2rem;font-weight:200;letter-spacing:.15em;
+          font-family:'Playwrite NZ',cursive;font-size:.8rem;color:var(--gold2);
+          text-align:center;margin-bottom:1.25rem;font-weight:200;letter-spacing:.12em;
         }
-        .mosaic-grid{ display:grid;grid-template-columns:repeat(7,1fr);gap:4px; transition:gap .6s ease; }
+        .mosaic-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;transition:gap .6s ease;}
         .tile{
-          aspect-ratio:1; display:flex;flex-direction:column;align-items:center;justify-content:center;
-          font-size:.65rem;font-family:'Cormorant Garamond',serif; transition:transform .3s;position:relative;
+          aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+          font-size:.6rem;font-family:'Cormorant',serif;transition:transform .25s;position:relative;
         }
         .tile:hover{transform:scale(1.1);z-index:2}
-        .tile-locked{background:transparent;border:1px solid rgba(255,255,255,.05);color:var(--dim)}
-        .tile-done{ border:none;color:rgba(255,255,255,.9);font-weight:700; }
-        .tile-img{ background-size:700% 700%; background-repeat:no-repeat; }
+        .tile-locked{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--dim)}
+        .tile-done{border:none;color:rgba(255,255,255,.9);font-weight:700;}
+        .tile-img{background-size:700% 700%;background-repeat:no-repeat;}
         .tile-cur{animation:tile-pulse 2.5s ease-in-out infinite}
-        @keyframes tile-pulse{0%,100%{box-shadow:0 0 0 rgba(212,168,83,0)}50%{box-shadow:0 0 20px rgba(212,168,83,.4)}}
+        @keyframes tile-pulse{0%,100%{box-shadow:0 0 0 rgba(212,168,83,0)}50%{box-shadow:0 0 16px rgba(212,168,83,.4)}}
 
-        .nusach-row{ display:flex;align-items:center;gap:1rem;justify-content:center; margin-bottom:2rem; }
-        .nusach-lbl{ font-size:.7rem;letter-spacing:.2em;text-transform:uppercase; color:var(--muted); }
+        .nusach-row{display:flex;align-items:center;gap:.75rem;justify-content:center;margin-bottom:.75rem;}
+        .nusach-lbl{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
         .nusach-select{
-          font-family:'Cormorant',serif;font-size:1.05rem;font-style:italic;
-          color:var(--gold2);background:transparent; border:none; border-bottom:1px solid var(--dim);
-          padding:.4rem .5rem;cursor:pointer;outline:none; transition:border-color .3s;
+          font-family:'Cormorant',serif;font-size:.98rem;font-style:italic;
+          color:var(--gold2);background:transparent;border:none;border-bottom:1px solid var(--dim);
+          padding:.3rem .4rem;cursor:pointer;outline:none;transition:border-color .3s;
         }
         .nusach-select:focus{border-color:var(--gold2);}
+        .nusach-select option{background-color:var(--deep);color:var(--gold2);font-style:normal;}
 
-        /* ─── STYLED NUSACH DROPDOWN OPTIONS ──────────────────── */
-        .nusach-select option {
-          background-color: var(--deep); /* Dark background matching theme */
-          color: var(--gold2);           /* Gold text */
-          font-style: normal;
-        }
+        .bracha-source{font-size:.65rem;color:var(--muted);font-style:italic;margin-top:1rem;text-align:center;}
 
-        .bracha-source{ font-size:.7rem;color:var(--muted);font-style:italic; margin-top:2rem;text-align:center; }
-
-        #sec-mosaic{margin-bottom:4rem;text-align:center}
+        #sec-mosaic{margin-bottom:1.5rem;text-align:center}
         .mosaic-peek-btn{
-          font-family:'Cormorant',serif;font-style:italic;font-size:1.1rem;
+          font-family:'Cormorant',serif;font-style:italic;font-size:1rem;
           color:var(--gold2);background:transparent;border:1px solid var(--dim);
-          padding:.6rem 2rem;cursor:pointer; transition:all .3s ease; margin-top:1rem;
+          padding:.45rem 1.5rem;cursor:pointer;transition:all .3s ease;margin-top:.6rem;
         }
-        .mosaic-peek-btn:hover{border-color:var(--gold2); background:rgba(212,168,83,.05);}
-
+        .mosaic-peek-btn:hover{border-color:var(--gold2);background:rgba(212,168,83,.05);}
 
         /* ─── STATS ("YOUR JOURNEY") ──────────────────────────── */
-        #sec-stats { margin-bottom: 4rem; }
-        .stats-row {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
+        #sec-stats{margin-bottom:1.5rem;}
+        .stats-row{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:.75rem;
         }
-        .stat {
-          background: linear-gradient(180deg, rgba(212,168,83,.04), transparent);
-          border: 1px solid rgba(201,168,76,.15);
-          border-radius: 8px;
-          padding: 2rem 0.5rem;
-          text-align: center;
+        .stat{
+          background:linear-gradient(180deg,rgba(212,168,83,.06),transparent);
+          border:1px solid rgba(201,168,76,.18);
+          border-radius:6px;
+          padding:1rem .5rem;
+          text-align:center;
         }
-        .stat-n { font-family: 'Cormorant Upright', serif; font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(--gold2); }
-        .stat-l { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-top: 0.8rem; font-family: 'Playwrite NZ', cursive; font-weight: 200; }
+        .stat-n{font-family:'Cormorant Upright',serif;font-size:2rem;font-weight:300;line-height:1;color:var(--gold2);}
+        .stat-l{font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:.4rem;font-family:'Playwrite NZ',cursive;font-weight:200;}
 
         /* ─── NOTIFICATIONS / SETTINGS ────────────────────────── */
-        #sec-settings{margin-bottom:4rem}
+        #sec-settings{margin-bottom:1.5rem}
         .notif-card{
-          text-align: center;
-          padding: 2.5rem 0;
-          border-top: 1px solid rgba(155,35,53,.3);
-          border-bottom: 1px solid rgba(155,35,53,.3);
+          text-align:center;
+          padding:1.2rem 0;
+          border-top:1px solid rgba(155,35,53,.3);
+          border-bottom:1px solid rgba(155,35,53,.3);
         }
         .notif-card h3{
-          font-family:'Cormorant Upright',serif;font-size:1.6rem;font-weight:300;
-          color:var(--gold2);margin-bottom:.5rem;
+          font-family:'Cormorant Upright',serif;font-size:1.3rem;font-weight:300;
+          color:var(--gold2);margin-bottom:.3rem;
         }
-        .notif-card p{font-size:1rem;color:var(--muted);margin-bottom:2rem;line-height:1.6; font-style: italic;}
+        .notif-card p{font-size:.9rem;color:var(--muted);margin-bottom:1rem;line-height:1.5;font-style:italic;}
 
-        .notif-btns{display:flex;gap:1.5rem; justify-content:center; flex-wrap:wrap;}
+        .notif-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
 
         .nbtn{
-          font-family:'Cormorant Garamond',serif; font-size:1.1rem; letter-spacing: 0.05em;
+          font-family:'Cormorant',serif;font-size:1rem;letter-spacing:.04em;
           color:var(--parch);
-          background: linear-gradient(180deg, rgba(212,168,83,.05), transparent);
-          border: 1px solid rgba(201,168,76,.2);
-          border-radius: 8px;
-          padding: 1.2rem 2rem;
-          cursor:pointer; transition: all .3s ease;
+          background:linear-gradient(180deg,rgba(212,168,83,.06),transparent);
+          border:1px solid rgba(201,168,76,.22);
+          border-radius:6px;
+          padding:.7rem 1.4rem;
+          cursor:pointer;transition:all .25s ease;
         }
         .nbtn:hover{
-          border-color:var(--gold2);
-          color:var(--gold2);
-          background: rgba(212,168,83,.08);
-          transform: translateY(-2px);
+          border-color:var(--gold2);color:var(--gold2);
+          background:rgba(212,168,83,.1);transform:translateY(-1px);
         }
-        .notif-status{font-size:.85rem;color:var(--muted);margin-top:1.5rem;font-style:italic;}
+        .notif-status{font-size:.78rem;color:var(--muted);margin-top:.9rem;font-style:italic;}
 
         /* ─── BOTTOM ACTIONS ───────────────────────────────────── */
-        .bottom-bar{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem}
+        .bottom-bar{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem}
         .pill{
-          font-family:'Playwrite NZ',cursive;font-size:.75rem;font-weight:200;
-          color:var(--muted);background:none;border:none; cursor:pointer;
-          transition:color .3s; padding:.5rem; letter-spacing: .05em;
+          font-family:'Playwrite NZ',cursive;font-size:.68rem;font-weight:200;
+          color:var(--muted);background:none;border:none;cursor:pointer;
+          transition:color .3s;padding:.4rem;letter-spacing:.04em;
         }
         .pill:hover{color:var(--gold2);}
 
-        .shavuot-reveal .mosaic-grid { gap:0 !important; }
+        .shavuot-reveal .mosaic-grid{gap:0 !important;}
 
         /* ─── TILE NUMBERS & STATES ───────────────────────────── */
         .tile-num{
@@ -515,87 +541,87 @@
 
         /* ─── LAG B'OMER ─────────────────────────────────────── */
         .lagbomer-banner{
-          text-align:center;padding:2.5rem 1rem 2rem;
-          margin:0 0 2rem;
+          text-align:center;padding:1.2rem .75rem 1rem;
+          margin:0 0 1rem;
           border-top:1px solid rgba(212,168,83,.4);
           border-bottom:1px solid rgba(212,168,83,.4);
         }
         .lagbomer-title{
           font-family:'UnifrakturMaguntia',cursive;
-          font-size:clamp(2rem,7vw,3.5rem);
+          font-size:clamp(1.5rem,5vw,2.5rem);
           color:var(--gold2);
-          text-shadow:0 0 40px rgba(212,168,83,.5),0 0 80px rgba(155,35,53,.3);
-          margin-bottom:.4rem;direction:rtl;
+          text-shadow:0 0 30px rgba(212,168,83,.4),0 0 60px rgba(155,35,53,.2);
+          margin-bottom:.25rem;direction:rtl;
         }
         .lagbomer-sub{
-          font-family:'Playwrite NZ',cursive;font-size:.75rem;
-          letter-spacing:.2em;color:var(--rose);
-          margin-bottom:1.5rem;text-transform:uppercase;font-weight:200;
+          font-family:'Playwrite NZ',cursive;font-size:.68rem;
+          letter-spacing:.18em;color:var(--rose);
+          margin-bottom:.8rem;text-transform:uppercase;font-weight:200;
         }
         .lagbomer-desc{
           font-family:'Cormorant',serif;font-style:italic;
-          font-size:1.05rem;color:var(--muted);
-          max-width:480px;margin:0 auto 1.5rem;line-height:1.9;
+          font-size:.95rem;color:var(--muted);
+          max-width:460px;margin:0 auto .8rem;line-height:1.7;
         }
-        .bonfire-wrap{display:flex;justify-content:center;margin:1rem 0;}
-        .bonfire{position:relative;width:80px;height:90px;}
-        .log{position:absolute;bottom:0;width:60px;height:12px;background:#5a3010;border-radius:6px;left:10px;}
-        .log::after{content:'';position:absolute;top:-5px;left:15px;width:50px;height:10px;background:#6b3a14;border-radius:5px;transform:rotate(-18deg);}
-        .ember{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:radial-gradient(circle,#fff5c0 0%,#ff8c00 50%,transparent 75%);border-radius:50%;animation:emb 1s ease-in-out infinite alternate;}
+        .bonfire-wrap{display:flex;justify-content:center;margin:.5rem 0;}
+        .bonfire{position:relative;width:70px;height:80px;}
+        .log{position:absolute;bottom:0;width:55px;height:11px;background:#5a3010;border-radius:6px;left:8px;}
+        .log::after{content:'';position:absolute;top:-4px;left:13px;width:45px;height:9px;background:#6b3a14;border-radius:5px;transform:rotate(-18deg);}
+        .ember{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:24px;height:24px;background:radial-gradient(circle,#fff5c0 0%,#ff8c00 50%,transparent 75%);border-radius:50%;animation:emb 1s ease-in-out infinite alternate;}
         @keyframes emb{from{transform:translateX(-50%) scale(.85);opacity:.8}to{transform:translateX(-50%) scale(1.1);opacity:1}}
-        .flame{position:absolute;bottom:22px;border-radius:50% 50% 30% 30% / 60% 60% 40% 40%;transform-origin:bottom center;}
-        .flame-c{left:50%;transform:translateX(-50%);width:28px;height:55px;background:linear-gradient(to top,#ff4500,#ff8c00,#ffd700 70%,transparent);animation:flicker 1.1s ease-in-out infinite alternate;}
-        .flame-l{left:12px;width:18px;height:38px;background:linear-gradient(to top,#c03000,#ff6000,#ffaa00 70%,transparent);animation:flickL 1.3s ease-in-out infinite alternate;}
-        .flame-r{right:12px;width:18px;height:38px;background:linear-gradient(to top,#c03000,#ff6000,#ffaa00 70%,transparent);animation:flickR 1.5s ease-in-out infinite alternate;}
-        .spark{position:absolute;width:3px;height:3px;background:#ffd700;border-radius:50%;bottom:40px;animation:spark-rise 1.8s ease-out infinite;opacity:0;}
-        .spark:nth-child(1){left:28px;animation-delay:0s;}
-        .spark:nth-child(2){left:40px;animation-delay:.5s;}
-        .spark:nth-child(3){left:20px;animation-delay:.9s;}
-        .spark:nth-child(4){left:50px;animation-delay:1.3s;}
-        @keyframes spark-rise{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-50px) scale(.3)}}
+        .flame{position:absolute;bottom:20px;border-radius:50% 50% 30% 30% / 60% 60% 40% 40%;transform-origin:bottom center;}
+        .flame-c{left:50%;transform:translateX(-50%);width:24px;height:48px;background:linear-gradient(to top,#ff4500,#ff8c00,#ffd700 70%,transparent);animation:flicker 1.1s ease-in-out infinite alternate;}
+        .flame-l{left:10px;width:16px;height:34px;background:linear-gradient(to top,#c03000,#ff6000,#ffaa00 70%,transparent);animation:flickL 1.3s ease-in-out infinite alternate;}
+        .flame-r{right:10px;width:16px;height:34px;background:linear-gradient(to top,#c03000,#ff6000,#ffaa00 70%,transparent);animation:flickR 1.5s ease-in-out infinite alternate;}
+        .spark{position:absolute;width:3px;height:3px;background:#ffd700;border-radius:50%;bottom:36px;animation:spark-rise 1.8s ease-out infinite;opacity:0;}
+        .spark:nth-child(1){left:24px;animation-delay:0s;}
+        .spark:nth-child(2){left:36px;animation-delay:.5s;}
+        .spark:nth-child(3){left:18px;animation-delay:.9s;}
+        .spark:nth-child(4){left:46px;animation-delay:1.3s;}
+        @keyframes spark-rise{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-45px) scale(.3)}}
         @keyframes flicker{from{transform:translateX(-50%) scaleX(1) scaleY(1)}to{transform:translateX(-50%) scaleX(.85) scaleY(1.08)}}
         @keyframes flickL{from{transform:rotate(-5deg) scaleY(1)}to{transform:rotate(8deg) scaleY(1.1)}}
         @keyframes flickR{from{transform:rotate(5deg) scaleY(1)}to{transform:rotate(-8deg) scaleY(1.1)}}
 
         /* ─── SHAVUOT ─────────────────────────────────────────── */
         .shavuot-pg-banner{
-          text-align:center;padding:2.5rem 1rem 2rem;
-          margin:0 0 2rem;
+          text-align:center;padding:1.2rem .75rem 1rem;
+          margin:0 0 1rem;
           border-top:1px solid rgba(212,168,83,.5);
           border-bottom:1px solid rgba(212,168,83,.5);
           background:linear-gradient(180deg,rgba(212,168,83,.05),transparent);
         }
         .shavuot-pg-title{
           font-family:'UnifrakturMaguntia',cursive;
-          font-size:clamp(2rem,7vw,3.5rem);
+          font-size:clamp(1.5rem,5vw,2.5rem);
           color:var(--gold2);
-          text-shadow:0 0 40px rgba(212,168,83,.5),0 0 80px rgba(155,35,53,.2);
-          margin-bottom:.4rem;direction:rtl;
+          text-shadow:0 0 30px rgba(212,168,83,.4),0 0 60px rgba(155,35,53,.15);
+          margin-bottom:.25rem;direction:rtl;
         }
         .shavuot-pg-sub{
-          font-family:'Playwrite NZ',cursive;font-size:.75rem;
-          letter-spacing:.2em;color:var(--gold);
-          margin-bottom:1.5rem;text-transform:uppercase;font-weight:200;
+          font-family:'Playwrite NZ',cursive;font-size:.68rem;
+          letter-spacing:.18em;color:var(--gold);
+          margin-bottom:.8rem;text-transform:uppercase;font-weight:200;
         }
         .shavuot-pg-desc{
           font-family:'Cormorant',serif;font-style:italic;
-          font-size:1.05rem;color:var(--muted);
-          max-width:480px;margin:0 auto 1.5rem;line-height:1.9;
+          font-size:.95rem;color:var(--muted);
+          max-width:460px;margin:0 auto .8rem;line-height:1.7;
         }
         /* animated wheat / stars decoration */
-        .shavuot-deco{display:flex;justify-content:center;gap:1.2rem;margin:1rem 0 .5rem;align-items:flex-end;}
+        .shavuot-deco{display:flex;justify-content:center;gap:1rem;margin:.6rem 0 .3rem;align-items:flex-end;}
         .shavuot-star{
-          font-size:1.6rem;color:var(--gold2);
+          font-size:1.3rem;color:var(--gold2);
           animation:shav-pulse 3s ease-in-out infinite;
         }
-        .shavuot-star:nth-child(2){animation-delay:.6s;font-size:2.2rem;}
+        .shavuot-star:nth-child(2){animation-delay:.6s;font-size:1.8rem;}
         .shavuot-star:nth-child(3){animation-delay:1.2s;}
         @keyframes shav-pulse{
           0%,100%{opacity:.5;transform:scale(1) rotate(-5deg);text-shadow:none}
-          50%{opacity:1;transform:scale(1.15) rotate(5deg);text-shadow:0 0 20px rgba(212,168,83,.6)}
+          50%{opacity:1;transform:scale(1.15) rotate(5deg);text-shadow:0 0 16px rgba(212,168,83,.6)}
         }
         .shavuot-wheat{
-          font-size:2rem;
+          font-size:1.6rem;
           animation:wheat-sway 2.5s ease-in-out infinite alternate;
           transform-origin:bottom center;
           display:inline-block;
@@ -615,12 +641,12 @@
         }
 
         @media(max-width:600px){
-          .stats-row { grid-template-columns: 1fr; gap: 1rem; }
-          .big-num{font-size:5.5rem;}
-          #sec-bracha{padding:2.5rem 0;}
-          .bra-he{font-size:1.4rem;}
-          .btn{padding:1rem 2rem;}
-          .nbtn { width: 100%; }
+          .stats-row{grid-template-columns:1fr;gap:.6rem;}
+          .big-num{font-size:3rem;}
+          #sec-bracha{padding:.8rem 0 1rem;}
+          .bra-he{font-size:1.1rem;}
+          .btn{padding:.75rem 1.5rem;}
+          .nbtn{width:100%;}
         }
 
         /* ─── DEV TOOL ────────────────────────────────────────── */
@@ -904,6 +930,25 @@
       return{he,tr,en};
     }
 
+    function omerTextSepharadic(d){
+      const w=Math.floor(d/7),r=d%7;
+      let he,tr,en;
+      if(w===0){
+        he=`הַיּוֹם ${HE_D[d]} לָעֹמֶר`;
+        tr=`Hayom ${TR_D[d]} la'omer.`;
+        en=`Today is ${d} ${d===1?'day':'days'} of the Omer.`;
+      }else if(r===0){
+        he=`הַיּוֹם ${HE_D[d]} לָעֹמֶר, שֶׁהֵם  ${HE_W[w]}`;
+        tr=`Hayom ${TR_D[d]} la'omer, she'hem ${TR_W[w]}.`;
+        en=`Today is ${d} days of the Omer, which is ${w} ${w===1?'week':'weeks'}.`;
+      }else{
+        he=`הַיּוֹם ${HE_D[d]} לָעֹמֶר, שֶׁהֵם  ${HE_W[w]} ${HE_R[r]}`;
+        tr=`Hayom ${TR_D[d]} la'omer, she'hem ${TR_W[w]} ${TR_R[r]}.`;
+        en=`Today is ${d} days of the Omer, which is ${w} ${w===1?'week':'weeks'} and ${r} ${r===1?'day':'days'}.`;
+      }
+      return{he,tr,en};
+    }
+
 
     /* ═══════════════════════════════════════════════════
        NUSACH / TRADITION DATA
@@ -930,7 +975,7 @@
     const NUSACH={
       ashkenaz:{
         label:"Ashkenazi",
-        desc:"Standard Ashkenazic rite (ArtScroll / Koren)",
+        desc:"Nusach Ashkenaz — standard Ashkenazic rite",
         pre_he: null,
         pre_tr: null,
         pre_en: null,
@@ -972,7 +1017,6 @@
         <br>
         Psalm 67: Lam'natzeach bin'ginot mizmor shir: Elohim y'choneinu vivarechenu, ya'er panav itanu Selah. Lada'at ba'aretz darkecha, b'chol goyim yeshuatecha. Yoducha amim Elohim, yoducha amim kulam. Yism'chu viranenu l'umim, ki tishpot amim mishor ul'umim ba'aretz tanchem Selah. Yoducha amim Elohim, yoducha amim kulam. Eretz nat'nah y'vulah, y'var'cheinu Elohim Eloheinu. Y'var'cheinu Elohim, v'yir'u oto kol afsei aretz.
         <br>
-        <br>
         Ana B'Koach: Ana b'choach g'dulat yemincha tatir tz'rurah. Kabel rinat amcha sagveinu tahareinu nora. Na gibor dorshei yichudcha k'vavat shomrem. Barchem taharem rachamei tzidkatcha tamid gomlem. Chasin kadosh b'rov tuvcha nahel adatecha. Yachid ge'eh l'amcha p'nei zochrei k'dushatecha. Shavateinu kabel ushma tza'akateinu yodea ta'alumot.
 Baruch shem k'vod malchuto l'olam va'ed.
         `,
@@ -992,12 +1036,17 @@ Baruch shem k'vod malchuto l'olam va'ed.
         pre_he: null,
         pre_tr: null,
         pre_en: null,
-        bracha_he:"בָּרוּךְ אַתָּה יי אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל סְפִירַת הָעֹמֶר.",
+        bracha_he:`בָּרוּךְ אַתָּה יי אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל סְפִירַת הָעֹמֶר.`,
         bracha_tr:"Baruch Atah Adonai, Eloheinu Melech ha-olam, asher kid'shanu b'mitzvotav v'tzivanu al sefirat ha-omer.",
         bracha_en:"Blessed are You, Lord our God, King of the universe, who has sanctified us with His commandments and commanded us concerning the counting of the Omer.",
-        post_he:`הָרַחֲמָן הוּא יַחֲזִיר לָנוּ עֲבוֹדַת בֵּית הַמִּקְדָּשׁ לִמְקוֹמָהּ, בִּמְהֵרָה בְיָמֵינוּ אָמֵן סֶלָה.<br><br><strong style="font-size:.75em;letter-spacing:.1em">תהלים ס״ז</strong><br>לַמְנַצֵּחַ בִּנְגִינֹת מִזְמוֹר שִׁיר: אֱלֹהִים יְחָנֵּנוּ וִיבָרְכֵנוּ, יָאֵר פָּנָיו אִתָּנוּ סֶלָה. לָדַעַת בָּאָרֶץ דַּרְכֶּךָ, בְּכָל גּוֹיִם יְשׁוּעָתֶךָ. יוֹדוּךָ עַמִּים אֱלֹהִים, יוֹדוּךָ עַמִּים כֻּלָּם. יִשְׂמְחוּ וִירַנְּנוּ לְאֻמִּים, כִּי תִשְׁפֹּט עַמִּים מִישׁוֹר, וּלְאֻמִּים בָּאָרֶץ תַּנְחֵם סֶלָה. יוֹדוּךָ עַמִּים אֱלֹהִים, יוֹדוּךָ עַמִּים כֻּלָּם. אֶרֶץ נָתְנָה יְבוּלָהּ, יְבָרְכֵנוּ אֱלֹהִים אֱלֹהֵינוּ. יְבָרְכֵנוּ אֱלֹהִים, וְיִירְאוּ אֹתוֹ כָּל אַפְסֵי אָרֶץ.`,
-        post_tr:`HaRachaman hu yachazir lanu avodat Beit HaMikdash limkomah, bimheirah v'yameinu, Amen Selah.<br><br><em>Psalm 67:</em> Lam'natzeach bin'ginot mizmor shir: Elohim y'choneinu vivarechenu, ya'er panav itanu Selah. Lada'at ba'aretz darkecha, b'chol goyim yeshuatecha. Yoducha amim Elohim, yoducha amim kulam. Yism'chu viranenu l'umim, ki tishpot amim mishor ul'umim ba'aretz tanchem Selah. Yoducha amim Elohim, yoducha amim kulam. Eretz nat'nah y'vulah, y'var'cheinu Elohim Eloheinu. Y'var'cheinu Elohim, v'yir'u oto kol afsei aretz.`,
-        post_en:`May the Merciful One restore the Temple service to its place, speedily in our days. Amen, Selah.<br><br><em>Psalm 67:</em> For the conductor, with string music, a psalm, a song. May God be gracious to us and bless us; may He illuminate His countenance with us, Selah. To make known Your way on earth, Your salvation among all nations. The peoples will acknowledge You, O God; all the peoples will acknowledge You. Nations will rejoice and sing for joy, for You will judge the peoples fairly and guide the nations on earth, Selah. The peoples will acknowledge You, O God; all the peoples will acknowledge You. The earth gave its produce; God, our God, will bless us. God will bless us, and all the ends of the earth will fear Him.`,
+        post_he:`הָרַחֲמָן הוּא יַחֲזִיר לָנוּ עֲבוֹדַת בֵּית הַמִּקְדָּשׁ לִמְקוֹמָהּ, בִּמְהֵרָה בְיָמֵינוּ אָמֵן סֶלָה.<br><br><strong style="font-size:.75em;letter-spacing:.1em">תהלים ס״ז</strong><br>לַמְנַצֵּחַ בִּנְגִינֹת מִזְמוֹר שִׁיר: אֱלֹהִים יְחָנֵּנוּ וִיבָרְכֵנוּ, יָאֵר פָּנָיו אִתָּנוּ סֶלָה. לָדַעַת בָּאָרֶץ דַּרְכֶּךָ, בְּכָל גּוֹיִם יְשׁוּעָתֶךָ. יוֹדוּךָ עַמִּים אֱלֹהִים, יוֹדוּךָ עַמִּים כֻּלָּם. יִשְׂמְחוּ וִירַנְּנוּ לְאֻמִּים, כִּי תִשְׁפֹּט עַמִּים מִישׁוֹר, וּלְאֻמִּים בָּאָרֶץ תַּנְחֵם סֶלָה. יוֹדוּךָ עַמִּים אֱלֹהִים, יוֹדוּךָ עַמִּים כֻּלָּם. אֶרֶץ נָתְנָה יְבוּלָהּ, יְבָרְכֵנוּ אֱלֹהִים אֱלֹהֵינוּ. יְבָרְכֵנוּ אֱלֹהִים, וְיִירְאוּ אֹתוֹ כָּל אַפְסֵי אָרֶץ. <br><strong style="font-size:.75em;letter-spacing:.1em">אָנָּא בְּכֹחַ</strong><br>אָנָּא בְּכֹחַ גְּדֻלַּת יְמִינְךָ תַּתִּיר צְרוּרָה. קַבֵּל רִנַּת עַמְּךָ שַׂגְּבֵנוּ טַהֲרֵנוּ נוֹרָא. נָא גִבּוֹר דּוֹרְשֵׁי יִחוּדְךָ כְּבָבַת שָׁמְרֵם. בָּרְכֵם טַהֲרֵם רַחֲמֵי צִדְקָתְךָ תָּמִיד גָּמְלֵם. חֲסִין קָדוֹשׁ בְּרֹב טוּבְךָ נַהֵל עֲדָתֶךָ. יָחִיד גֵּאֶה לְעַמְּךָ פְּנֵה זוֹכְרֵי קְדֻשָּׁתֶךָ. שַׁוְעָתֵנוּ קַבֵּל וּשְׁמַע צַעֲקָתֵנוּ יוֹדֵעַ תַּעֲלֻמוֹת.<br><em style="font-size:.8em">בָּרוּךְ שֵׁם כְּבוֹד מַלְכוּתוֹ לְעוֹלָם וָעֶד</em>`,
+        post_tr:`HaRachaman hu yachazir lanu avodat Beit HaMikdash limkomah, bimheirah v'yameinu, Amen Selah.<br><br><em>Psalm 67:</em> Lam'natzeach bin'ginot mizmor shir: Elohim y'choneinu vivarechenu, ya'er panav itanu Selah. Lada'at ba'aretz darkecha, b'chol goyim yeshuatecha. Yoducha amim Elohim, yoducha amim kulam. Yism'chu viranenu l'umim, ki tishpot amim mishor ul'umim ba'aretz tanchem Selah. Yoducha amim Elohim, yoducha amim kulam. Eretz nat'nah y'vulah, y'var'cheinu Elohim Eloheinu. Y'var'cheinu Elohim, v'yir'u oto kol afsei aretz.
+        <br>
+        Ana B'Koach: Ana b'choach g'dulat yemincha tatir tz'rurah. Kabel rinat amcha sagveinu tahareinu nora. Na gibor dorshei yichudcha k'vavat shomrem. Barchem taharem rachamei tzidkatcha tamid gomlem. Chasin kadosh b'rov tuvcha nahel adatecha. Yachid ge'eh l'amcha p'nei zochrei k'dushatecha. Shavateinu kabel ushma tza'akateinu yodea ta'alumot.
+Baruch shem k'vod malchuto l'olam va'ed.`,
+        post_en:`May the Merciful One restore the Temple service to its place, speedily in our days. Amen, Selah.<br><br><em>Psalm 67:</em> For the conductor, with string music, a psalm, a song. May God be gracious to us and bless us; may He illuminate His countenance with us, Selah. To make known Your way on earth, Your salvation among all nations. The peoples will acknowledge You, O God; all the peoples will acknowledge You. Nations will rejoice and sing for joy, for You will judge the peoples fairly and guide the nations on earth, Selah. The peoples will acknowledge You, O God; all the peoples will acknowledge You. The earth gave its produce; God, our God, will bless us. God will bless us, and all the ends of the earth will fear Him.
+        <br>
+        We implore You, by the great power of Your right hand, release the captive. Accept the prayer of Your people; strengthen us, purify us, Awesome One. Mighty One, we beseech You, guard as the apple of the eye those who seek Your Oneness. Bless them, cleanse them; bestow upon them forever Your merciful righteousness. Powerful, Holy One, in Your abounding goodness, guide Your congregation. Only and Exalted One, turn to Your people who are mindful of Your holiness. Accept our supplication and hear our cry, You who knows secret thoughts. Blessed be the name of the glory of His kingdom forever and ever.`,
         kavvanah:false,
       },
     };
@@ -1242,6 +1291,7 @@ Baruch shem k'vod malchuto l'olam va'ed.
       const wkSef=SEFIROT[wk-1];
       const dySef=SEFIROT[dy];
       const ot=omerText(d);
+      const ots=omerTextSepharadic(d);
 
       // ── SHAVUOT (day 50) ──────────────────────────────────────
       if(d===50){
@@ -1336,7 +1386,15 @@ Baruch shem k'vod malchuto l'olam va'ed.
             <button class="tab ${ST.tab==='en'?'on':''}" onclick="setTab('en')">English</button>
           </div>
 
-          ${(()=>{ const B=brachaForNusach(ST.nusach,ot,d); return `
+          ${(()=>{
+          let B;
+          if (ST.nusach === 'edotmizrach'){
+            B =brachaForNusach(ST.nusach,ots,d);
+          }else{
+            B=brachaForNusach(ST.nusach,ot,d);
+          }
+          return`
+
           <div id="panel-he" class="panel ${ST.tab==='he'?'on':''}">
             <div class="bra-he">${B.he}</div>
           </div>
@@ -1373,11 +1431,14 @@ Baruch shem k'vod malchuto l'olam va'ed.
             <h3>Counting Omer Notifications</h3>
             <p>Get a push notification when nightfall arrives (when it's time to count the next day). Works as long as you keep the tab open.</p>
             <div class="notif-btns">
-              <button class="nbtn" onclick="requestNotif()">Enable Notifications</button>
-              ${ST.nightfallUTC&&!ST.afterNightfall?`<button class="nbtn" onclick="scheduleNotif()">Schedule Tonight's Reminder</button>`:''}
+              ${(typeof Notification !== 'undefined' && Notification.permission === 'granted' && ST.notifGranted)
+                ? `<button class="nbtn" onclick="disableNotif()">Disable Notifications</button>`
+                : `<button class="nbtn" onclick="requestNotif()">Enable Notifications</button>`
+              }
+              ${ST.nightfallUTC&&!ST.afterNightfall&&ST.notifGranted?`<button class="nbtn" onclick="openScheduleNotif()">Schedule Tonight's Reminder</button>`:''}
             </div>
             <div class="notif-status" id="notif-status">
-              ${Notification&&Notification.permission==='granted'?'✓ Notifications are enabled':'Tap above to allow notifications'}
+              ${(typeof Notification !== 'undefined' && Notification.permission === 'granted' && ST.notifGranted) ? '✓ Notifications are enabled — you will be reminded each night at nightfall.' : 'Tap above to allow notifications'}
             </div>
           </div>
         </section>
