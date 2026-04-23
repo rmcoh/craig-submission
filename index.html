@@ -1270,7 +1270,7 @@ Baruch shem k'vod malchuto l'olam va'ed.
           <div class="orn"><span>Reminders</span></div>
           <div class="notif-card">
             <h3>Counting Omer Notifications</h3>
-            <p>Get a push notification when nightfall arrives (when it's time to count the next day). Works even when the app is closed (as long as you keep the tab open).</p>
+            <p>Get a push notification when nightfall arrives (when it's time to count the next day). Works as long as you keep the tab open.</p>
             <div class="notif-btns">
               <button class="nbtn" onclick="requestNotif()">Enable Notifications</button>
               ${ST.nightfallUTC&&!ST.afterNightfall?`<button class="nbtn" onclick="scheduleNotif()">Schedule Tonight's Reminder</button>`:''}
@@ -1575,7 +1575,7 @@ Baruch shem k'vod malchuto l'olam va'ed.
         if(el) el.textContent='✓ Notifications enabled!';
         scheduleNotif();
       }else{
-        if(el) el.textContent='Notifications blocked — enable them in your browser settings.';
+        if(el) el.textContent='Notifications are blocked: enable them in your browser settings.';
       }
     }
 
@@ -1584,7 +1584,7 @@ Baruch shem k'vod malchuto l'olam va'ed.
       if(Notification.permission!=='granted'){requestNotif();return;}
       const delay=ST.nightfallUTC-new Date();
       if(delay<=0){
-        new Notification('ספירת העומר — Count Now!',{
+        new Notification('It's time to Count the Omer!',{
           body:`It's nightfall! Time to count Day ${ST.omerDay} of the Omer.`,
           icon:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Star_of_David.svg/120px-Star_of_David.svg.png',
         });
@@ -1594,8 +1594,8 @@ Baruch shem k'vod malchuto l'olam va'ed.
 
       clearTimeout(ST.timerID);
       ST.timerID=setTimeout(()=>{
-        new Notification('ספירת העומר — Time to Count!',{
-          body:`🌟 Nightfall has arrived. Count Day ${ST.omerDay} of the Omer now!`,
+        new Notification('It's time to Count the Omer!',{
+          body:`It's nightfall. Count Day ${ST.omerDay} of the Omer now!`,
           icon:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Star_of_David.svg/120px-Star_of_David.svg.png',
         });
       },delay);
